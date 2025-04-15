@@ -10,10 +10,8 @@ type Props = {
   children: ReactNode;
 };
 
-export default function RootLayout({ children }: Readonly<Props>) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
-}
+export default ({ children }: Readonly<Props>) => (
+  <html lang="en">
+    <body>{children}</body>
+  </html>
+);
