@@ -1,3 +1,5 @@
+import { Theme } from "@radix-ui/themes";
+import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
 import { ReactNode } from "react";
 import "./globals.css";
@@ -14,8 +16,10 @@ type Props = {
 export default ({ children }: Readonly<Props>) => (
   <html lang="en">
     <body>
-      <NavBar />
-      <main>{children}</main>
+      <Theme>
+        <NavBar />
+        <main>{children}</main>
+      </Theme>
     </body>
   </html>
 );
