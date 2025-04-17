@@ -1,9 +1,15 @@
 import { Theme } from "@radix-ui/themes";
-import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import { ReactNode } from "react";
 import "./globals.css";
 import NavBar from "./NavBar";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Issue Tracker",
@@ -15,10 +21,11 @@ type Props = {
 
 export default ({ children }: Readonly<Props>) => (
   <html lang="en">
-    <body>
-      <Theme>
+    <body className={inter.variable}>
+      <Theme radius="large">
         <NavBar />
         <main className="p-4">{children}</main>
+        {/* <ThemePanel /> */}
       </Theme>
     </body>
   </html>
