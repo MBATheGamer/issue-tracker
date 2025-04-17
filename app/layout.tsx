@@ -18,7 +18,7 @@ export default ({ children }: Readonly<Props>) => (
     <body>
       <Theme>
         <NavBar />
-        <main>{children}</main>
+        <main className="p-4">{children}</main>
       </Theme>
     </body>
   </html>
