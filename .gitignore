@@ -20,3 +20,7 @@ build
 
 # typescript
 next-env.d.ts
+
+# prisma
+*/generated/prisma
+prisma/*.db*
