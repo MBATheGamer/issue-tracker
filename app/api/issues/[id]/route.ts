@@ -7,11 +7,11 @@ type Params = {
 };
 
 type Props = {
-  params: Params;
+  params: Promise<Params>;
 };
 
 export const PATCH = async (request: NextRequest, { params }: Props) => {
-  const { id } = params;
+  const { id } = await params;
 
   const body = await request.json();
 

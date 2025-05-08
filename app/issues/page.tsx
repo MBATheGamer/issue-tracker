@@ -3,6 +3,9 @@ import prisma from "@/prisma/client";
 import { Table } from "@radix-ui/themes";
 import IssueActions from "./IssueActions";
 
+export const dynamic = "force-dynamic";
+// export const revalidate = 60;
+
 export default async () => {
   const issues = await prisma.issue.findMany();
 
