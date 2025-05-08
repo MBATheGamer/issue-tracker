@@ -1,4 +1,4 @@
-import { Theme } from "@radix-ui/themes";
+import { Container, Theme } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ReactNode } from "react";
@@ -24,7 +24,9 @@ export default ({ children }: Readonly<Props>) => (
     <body className={inter.variable}>
       <Theme radius="large">
         <NavBar />
-        <main className="p-4">{children}</main>
+        <main className="p-4">
+          <Container>{children}</Container>
+        </main>
         {/* <ThemePanel /> */}
       </Theme>
     </body>
