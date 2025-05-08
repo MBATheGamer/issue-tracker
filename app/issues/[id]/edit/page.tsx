@@ -1,12 +1,6 @@
 import prisma from "@/prisma/client";
-import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
-import IssueFormSkeleton from "../../_components/IssueFormSkeleton";
-
-const IssueForm = dynamic(() => import("@/app/issues/_components/IssueForm"), {
-  ssr: false,
-  loading: () => <IssueFormSkeleton />,
-});
+import DynamicIssueForm from "../../_components/DynamicIssueForm";
 
 type Params = {
   id: string;
@@ -27,5 +21,5 @@ export default async ({ params }: Props) => {
 
   if (!issue) notFound();
 
-  return <IssueForm issue={issue} />;
+  return <DynamicIssueForm issue={issue} />;
 };
