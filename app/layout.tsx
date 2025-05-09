@@ -2,6 +2,7 @@ import { Container, Theme } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ReactNode } from "react";
+import AuthProvider from "./auth/Provider";
 import "./globals.css";
 import NavBar from "./NavBar";
 
@@ -22,13 +23,15 @@ type Props = {
 export default ({ children }: Readonly<Props>) => (
   <html lang="en">
     <body className={inter.variable}>
-      <Theme radius="large">
-        <NavBar />
-        <main className="p-4">
-          <Container>{children}</Container>
-        </main>
-        {/* <ThemePanel /> */}
-      </Theme>
+      <AuthProvider>
+        <Theme radius="large">
+          <NavBar />
+          <main className="p-4">
+            <Container>{children}</Container>
+          </main>
+          {/* <ThemePanel /> */}
+        </Theme>
+      </AuthProvider>
     </body>
   </html>
 );
