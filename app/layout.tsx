@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import AuthProvider from "./auth/Provider";
 import "./globals.css";
 import NavBar from "./NavBar";
+import QueryClientProvider from "./QueryClientProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,15 +24,17 @@ type Props = {
 export default ({ children }: Readonly<Props>) => (
   <html lang="en">
     <body className={inter.variable}>
-      <AuthProvider>
-        <Theme radius="large">
-          <NavBar />
-          <main className="p-4">
-            <Container>{children}</Container>
-          </main>
-          {/* <ThemePanel /> */}
-        </Theme>
-      </AuthProvider>
+      <QueryClientProvider>
+        <AuthProvider>
+          <Theme radius="large">
+            <NavBar />
+            <main className="p-4">
+              <Container>{children}</Container>
+            </main>
+            {/* <ThemePanel /> */}
+          </Theme>
+        </AuthProvider>
+      </QueryClientProvider>
     </body>
   </html>
 );
