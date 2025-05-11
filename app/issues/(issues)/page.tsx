@@ -26,7 +26,6 @@ type Column = {
 
 export default async (props: Props) => {
   const searchParams = await props.searchParams;
-  const { status } = searchParams;
 
   const columns: Column[] = [
     { label: "Issue", value: "title" },
@@ -35,11 +34,23 @@ export default async (props: Props) => {
   ];
 
   const statuses = Object.values(Status);
+  const status = statuses.includes(searchParams.status)
+    ? searchParams.status
+    : undefined;
+
+  const orderBy = columns
+    .map(({ value }) => value)
+    .includes(searchParams.orderBy)
+    ? {
+        [searchParams.orderBy]: "asc",
+      }
+    : undefined;
 
   const issues = await prisma.issue.findMany({
     where: {
-      status: statuses.includes(status) ? status : undefined,
+      status,
     },
+    orderBy,
   });
 
   return (
