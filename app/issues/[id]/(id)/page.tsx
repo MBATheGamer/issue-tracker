@@ -1,6 +1,7 @@
 import authOptions from "@/app/auth/authOptions";
 import prisma from "@/prisma/client";
 import { Box, Flex, Grid } from "@radix-ui/themes";
+import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 import AssigneeSelect from "./AssigneeSelect";
@@ -14,6 +15,21 @@ type Params = {
 
 type Props = {
   params: Promise<Params>;
+};
+
+export const generateMetadata = async ({ params }: Props) => {
+  const { id } = await params;
+
+  const issue = await prisma.issue.findUnique({
+    where: {
+      id: parseInt(id),
+    },
+  });
+
+  return {
+    title: `Issue Tracker - ${issue?.title}`,
+    description: `Details of issue ${issue?.id}`,
+  } satisfies Metadata;
 };
 
 export default async ({ params }: Props) => {

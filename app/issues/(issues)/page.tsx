@@ -2,11 +2,17 @@ import Pagination from "@/app/components/Pagination";
 import { Status } from "@/app/generated/prisma";
 import prisma from "@/prisma/client";
 import { Flex } from "@radix-ui/themes";
+import { Metadata } from "next";
 import IssueActions from "./IssueActions";
 import IssueTable, { columnNames, IssueQuery } from "./IssueTable";
 
 export const dynamic = "force-dynamic";
 // export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Issue Tracker - Issue List",
+  description: "View all project issues",
+};
 
 type Props = {
   searchParams: Promise<IssueQuery>;
