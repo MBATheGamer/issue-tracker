@@ -1,1 +1,3 @@
-export default () => <></>;
+import LatestIssues from "./LatestIssues";
+
+export default () => <LatestIssues />;
